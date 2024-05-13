@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import connexion.Connexion;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -55,7 +56,7 @@ public class VoitureController {
                 float tarif = rs.getFloat("tarif");
                 String imgV = rs.getString("imgV"); 
 
-                Voiture voiture = new Voiture(id, imgV, imgV, nbV, tarif, imgV);
+                Voiture voiture = new Voiture(id, marque, modele, nbV, tarif, imgV);
                 voitureList.add(voiture);
             }
         } catch (SQLException e) {
@@ -77,6 +78,28 @@ public class VoitureController {
         
 
         table1.getItems().addAll(findAll());
+    }
+    
+    @FXML
+    protected void remove(ActionEvent event) {
+        Voiture selectedVoiture = table1.getSelectionModel().getSelectedItem();
+        if (selectedVoiture != null) {
+            
+            try {
+                Connection conn = Connexion.getConn();
+                Statement stmt = conn.createStatement();
+                String query = "DELETE FROM voiture WHERE idV = " + selectedVoiture.getId();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                System.err.println("Error executing query: " + e.getMessage());
+                return; 
+            }
+
+            
+            table1.getItems().remove(selectedVoiture);
+        } else {
+            System.out.println("Aucune voiture sélectionnée à supprimer.");
+        }
     }
 
 }

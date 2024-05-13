@@ -1,18 +1,17 @@
 package application;
 
-import java.util.Date;
 
 public class Client {
-	private int id;
+	private int idC;
 	private String nom;
 	private String prenom;
-	private Date datePrisePermis;
-	private Date dateNaissance;
+	private String tel;
+	private String adresse;
 	public int getId() {
-		return id;
+		return idC;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.idC = id;
 	}
 	public String getNom() {
 		return nom;
@@ -26,30 +25,25 @@ public class Client {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public Date getDatePrisePermis() {
-		return datePrisePermis;
+	public String getTel() {
+		return tel;
 	}
-	public void setDatePrisePermis(Date datePrisePermis) {
-		this.datePrisePermis = datePrisePermis;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
-	public Date getDateNaissance() {
-		return dateNaissance;
+	public String getAdresse() {
+		return adresse;
 	}
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
-	@Override
-	public String toString() {
-		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", datePrisePermis=" + datePrisePermis
-				+ ", dateNaissance=" + dateNaissance + "]";
-	}
-	public Client(int id, String nom, String prenom, Date datePrisePermis, Date dateNaissance) {
+	public Client(int id, String nom, String prenom, String tel, String adresse) {
 		super();
-		this.id = id;
+		this.idC = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.datePrisePermis = datePrisePermis;
-		this.dateNaissance = dateNaissance;
+		this.tel = tel;
+		this.adresse = adresse;
 	}
 	
 

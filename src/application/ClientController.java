@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import connexion.Connexion;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,64 +19,76 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 public class ClientController {
-	/*
-	@FXML
-    private TableView<Voiture> table2;
-	@FXML
-	private TableColumn<Voiture, Integer> idC;
+    @FXML
+    private TableView<Client> table2;
 
     @FXML
-    private TableColumn<Voiture, String> nom;
-    @FXML
-    private TableColumn<Voiture, String> prenom;
+    private TableColumn<Client, Integer> idC;
 
     @FXML
-    private TableColumn<Voiture, Integer> tel;
+    private TableColumn<Client, String> nom;
 
     @FXML
-    private TableColumn<Voiture,Float> adresse;
-    
+    private TableColumn<Client, String> prenom;
+
     @FXML
-    private TableColumn<Voiture,String> image;
-    
-    
-    public List<Voiture> findAll() {
-        List<Voiture> voitureList = new ArrayList<>();
+    private TableColumn<Client, String> tel;
+
+    @FXML
+    private TableColumn<Client, String> adresse;
+
+    public List<Client> findAllclients() {
+        List<Client> clientList = new ArrayList<>();
         try {
             Connection conn = Connexion.getConn();
             Statement stmt = conn.createStatement();
-            String query = "SELECT * FROM voiture";
+            String query = "SELECT * FROM client";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                int idC = rs.getInt("idC");
+                int id = rs.getInt("idC");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
-                int tel = rs.getInt("tel");
-                float adresse = rs.getFloat("adresse");
-                String imgV = rs.getString("imgV"); 
+                String tel = rs.getString("tel");
+                String adresse = rs.getString("adresse");
 
-                Voiture voiture = new Voiture(idC, imgV, imgV, tel, adresse, imgV);
-                voitureList.add(voiture);
+                Client client = new Client(id, nom, prenom, tel, adresse);
+                clientList.add(client);
             }
         } catch (SQLException e) {
             System.err.println("Error executing query: " + e.getMessage());
         }
-        return voitureList;
+        return clientList;
     }
 
-	
-    public voidC initialize() {
-    	
-        prenom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getprenom()));
-        nom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getnom()));
-        adresse.setCellValueFactory(cellData -> new SimpleObjectProperty<Float>(cellData.getValue().getadresse()));
-        tel.setCellValueFactory(cellData->new SimpleObjectProperty<Integer>(cellData.getValue().gettel()));
-        idC.setCellValueFactory(cellData->new SimpleObjectProperty<Integer>(cellData.getValue().getidC()));
-        
-        image.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getImgV()));
-        
+    public void initialize() {
+        idC.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
 
-        table2.getItems().addAll(findAll());
-    }*/
+        table2.getItems().addAll(findAllclients());
+    }
+    
+    @FXML
+    protected void remove(ActionEvent event) {
+        Client selectedClient = table2.getSelectionModel().getSelectedItem();
+        if (selectedClient != null) {
+            
+            try {
+                Connection conn = Connexion.getConn();
+                Statement stmt = conn.createStatement();
+                String query = "DELETE FROM client WHERE idV = " + selectedClient.getId();
+                stmt.executeUpdate(query);
+            } catch (SQLException e) {
+                System.err.println("Error executing query: " + e.getMessage());
+                return; 
+            }
 
+            
+            table2.getItems().remove(selectedClient);
+        } else {
+            System.out.println("Aucune voiture sélectionnée à supprimer.");
+        }
+    }
 }

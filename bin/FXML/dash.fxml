@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +14,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="860.0" style="-fx-background-color: #FFFADE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashController">
    <children>
@@ -26,24 +26,25 @@
                         <Image url="@../../../../../../../../Pictures/R.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="108.0" layoutY="89.0" text="admin" textFill="#fffbfb" />
                </children>
             </Pane>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="264.0" style="-fx-background-color: #00B8C2;" text="acceuil" textAlignment="CENTER" textFill="#fcf8f8">
+            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="264.0" text="acceuil" textAlignment="CENTER" textFill="#fcf8f8">
                <font>
                   <Font name="Microsoft Sans Serif" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="vButton" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#export" prefHeight="50.0" prefWidth="254.0" style="-fx-background-color: #000D6B;" text="Voitures" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+            <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="254.0" style="-fx-background-color: #000D6B;" text="Voitures" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="Microsoft Sans Serif" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="cButton" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#export" prefHeight="54.0" prefWidth="262.0" style="-fx-background-color: #000D6B;" text="Clients" textFill="#fff9f9">
+            <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="54.0" prefWidth="262.0" style="-fx-background-color: #000D6B;" text="Clients" textFill="#fff9f9">
                <font>
                   <Font name="Microsoft Sans Serif" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="rButton" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#export" prefHeight="52.0" prefWidth="258.0" style="-fx-background-color: #000D6B;" text="reservations" textAlignment="CENTER" textFill="WHITE">
+            <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="52.0" prefWidth="258.0" style="-fx-background-color: #000D6B;" text="reservations" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Microsoft Sans Serif" size="15.0" />
                </font>
@@ -55,7 +56,7 @@
             </Button>
             <Pane prefHeight="98.0" prefWidth="254.0">
                <children>
-                  <Button contentDisplay="CENTER" layoutX="73.0" layoutY="66.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" style="-fx-background-color: #00B8C2;" text="déconnexion" textFill="#fff6f6">
+                  <Button contentDisplay="CENTER" layoutX="73.0" layoutY="66.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" text="déconnexion" textFill="#fff6f6">
                      <font>
                         <Font name="Microsoft Sans Serif" size="13.0" />
                      </font>
@@ -77,62 +78,69 @@
       </TextField>
       <GridPane layoutX="267.0" layoutY="209.0" prefHeight="363.0" prefWidth="578.0">
         <columnConstraints>
-          <ColumnConstraints />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="122.0" prefWidth="324.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;" GridPane.columnIndex="1">
+            <Pane prefHeight="122.0" prefWidth="324.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;">
                <children>
+                  <Label fx:id="TVoi" layoutX="80.0" layoutY="125.0" prefHeight="16.0" prefWidth="131.0" text="Total des voitures" textFill="#f5f5ff">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="14.0" />
+                     </font>
+                  </Label>
                   <ImageView fitHeight="76.0" fitWidth="80.0" layoutX="98.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../../Downloads/voiture-removebg-preview.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="TVoi" fill="#2b0584" fontSmoothingType="LCD" layoutX="108.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Text">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="14.0" />
-                     </font></Text>
                </children>
             </Pane>
-            <Pane prefHeight="122.0" prefWidth="250.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;" GridPane.columnIndex="2">
+            <Pane prefHeight="122.0" prefWidth="250.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;" GridPane.columnIndex="1">
                <children>
                   <ImageView fitHeight="76.0" fitWidth="104.0" layoutX="93.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../../Downloads/OIP__1_-removebg-preview%20(1).png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="TCli" fill="#2b0584" fontSmoothingType="LCD" layoutX="106.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Text">
+                  <Label fx:id="TCli" layoutX="84.0" layoutY="124.0" text="Total des Clients">
                      <font>
                         <Font name="Microsoft Sans Serif" size="14.0" />
-                     </font></Text>
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;" GridPane.rowIndex="1">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="100.0" layoutX="99.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../Pictures/R%20(1).png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="Tresa" fill="#2b0584" fontSmoothingType="LCD" layoutX="111.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Text">
+                  <Label fx:id="Tresa" layoutX="79.0" layoutY="132.0" text="Total des réservations">
                      <font>
                         <Font name="Microsoft Sans Serif" size="14.0" />
-                     </font></Text>
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <ImageView fitHeight="76.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fitHeight="76.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff; -fx-border-color: #000D6B;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="105.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../../Downloads/OIP__2_-removebg-preview.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="stat" layoutX="112.0" layoutY="131.0" text="Statistique">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

@@ -34,22 +34,39 @@ public class DashController {
         
         afficherTotaux();
     }
-
+    
+    @FXML
     public void export(ActionEvent event) {
-            // Charger la nouvelle page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("voitureDash.fxml"));
-            Parent root;
-            try {
-                root = loader.load();
-                VoitureController controller = loader.getController();
+        String fxmlFile = null;
+        if (event.getSource() instanceof javafx.scene.control.Button) {
+            javafx.scene.control.Button clickedButton = (javafx.scene.control.Button) event.getSource();
+            switch (clickedButton.getId()) {
+                case "vButton":
+                    fxmlFile = "voitureDash.fxml";
+                    break;
+                case "cButton":
+                    fxmlFile = "clientDash.fxml";
+                    break;
+                case "rButton":
+                    fxmlFile = "resaDash.fxml";
+                    break;
+                default:
+                    break;
+            }
+        }
 
+        if (fxmlFile != null) {
+            // Charger la nouvelle page
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+                Parent root = loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        
+        }
     }
 
 	// Méthode pour récupérer les totaux à partir de la base de données et les afficher

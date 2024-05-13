@@ -4,43 +4,55 @@ import java.util.Date;
 
 public class Resa {
 	private int id;
-	private Date dateDebut;
-	private Date dateFin;
-	private Double tarif;
+	private int idC;
+	private int idV;
+	private Date date_debut;
+	private Date date_fin;
+	private Double total;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getDateDebut() {
-		return dateDebut;
+	public int getIdC() {
+		return idC;
 	}
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
+	public void setIdC(int idC) {
+		this.idC = idC;
 	}
-	public Date getDateFin() {
-		return dateFin;
+	public int getIdV() {
+		return idV;
 	}
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
+	public void setIdV(int idV) {
+		this.idV = idV;
 	}
-	public Double getTarif() {
-		return tarif;
+	public Date getDate_debut() {
+		return date_debut;
 	}
-	public void setTarif(Double tarif) {
-		this.tarif = tarif;
+	public void setDate_debut(Date date_debut) {
+		this.date_debut = date_debut;
 	}
-	public Resa(int id, Date dateDebut, Date dateFin, Double tarif) {
+	public Date getDate_fin() {
+		return date_fin;
+	}
+	public void setDate_fin(Date date_fin) {
+		this.date_fin = date_fin;
+	}
+	public Double getTotal() {
+		return total;
+	}
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+	public Resa(int id, int idC, int idV, Date date_debut, Date date_fin, Double total) {
 		super();
 		this.id = id;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.tarif = tarif;
-	}
-	@Override
-	public String toString() {
-		return "Resa [id=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", tarif=" + tarif + "]";
+		this.idC = idC;
+		this.idV = idV;
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+		this.total = total;
 	}
 	
 	
