@@ -1,4 +1,4 @@
-Here's the updated project description in English:
+
 
 ---
 
@@ -60,5 +60,3 @@ This project is a car rental management application with a JavaFX user interface
 4. Run the JavaFX application.
 
 ---
-
-This description covers both parts of the project: user management (registration, login, reservation) and the admin dashboard for a complete overview of the application.
